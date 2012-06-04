@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/hodnettg/logik/logikcull/config/elasticsearch'
+let g:netrw_dirhist_2='/home/hodnettg/logik/logikcull/app/controllers/admin'
+let g:netrw_dirhist_3='/home/hodnettg/logik/logikcull/db/migrate'
+let g:netrw_dirhist_4='/home/hodnettg/logik/logikcull/app/views/saved_searches'
+let g:netrw_dirhist_5='/home/hodnettg/.vim'
+let g:netrw_dirhist_6='/home/hodnettg/logik/vimrc/.vim/nerdtree_plugin'
