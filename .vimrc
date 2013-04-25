@@ -21,7 +21,7 @@ set showmode
 "set search scan to wrap around file
 set wrapscan
 
-"make command line two lines high 
+"make command line two lines high
 set ch=2
 
 "keep stuff in history
@@ -30,6 +30,20 @@ set history=100
 "set tabs to only be 2 spaces
 set tabstop=2 shiftwidth=2 expandtab
 
+" Highlight trailing whitespace
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Highlight too-long lines
+autocmd BufRead,InsertEnter,InsertLeave * 2match LineLengthError /\%100v.*/
+highlight LineLengthError ctermbg=black guibg=black
+autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
+
+" Set up highlight group & retain through colorscheme changes
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+"color wombat256mod
 color tango2
 
 map <C-n> <ESC>:tabnew<RETURN>

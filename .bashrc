@@ -1,4 +1,3 @@
-
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -21,6 +20,8 @@ shopt -s checkwinsize
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+
+#export TERM=screen-256color
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -80,7 +81,6 @@ alias l='ls -CF'
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -91,13 +91,13 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 function parse_git_branch {
  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "("${ref#refs/heads/}")"
 }
-
 
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
@@ -108,4 +108,5 @@ PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $ $WHITE"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-JAVA_HOME=/usr/lib/jvm/java-6-sun-1.6.0.26
+JAVA_HOME=/usr/lib/jvm/java-6-oracle/
+
