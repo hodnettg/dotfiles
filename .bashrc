@@ -108,5 +108,16 @@ PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $ $WHITE"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-JAVA_HOME=/usr/lib/jvm/java-6-oracle/
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 
+export EDITOR=vim
+export BUNDLE_EDITOR=vim
+
+#assumes annotate gem is installed and in rails directory
+alias annotate_models='annotate --exclude tests,fixtures,factories -p before'
+
+# restarts Vbox Guest Additions Clipboard
+alias restart_clipboard='pkill -f VBoxClient; VBoxClient --clipboard'
+
+#Removes .orig files left over from mergetool after resolving conflicts
+alias clean_merge='find -name *.orig -exec rm {} \;'
