@@ -30,6 +30,10 @@ function parse_git_branch {
   echo "("${ref#refs/heads/}")"
 }
 
+# Terminal colours
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
