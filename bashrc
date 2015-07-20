@@ -91,6 +91,9 @@ PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $ $RESETCOLOR"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+# give RVM a chance to load after tmux split
+cd ..; cd -
+
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 export EDITOR=vim
 export BUNDLE_EDITOR=vim
