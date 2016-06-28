@@ -97,3 +97,9 @@ cd ..; cd -
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 export EDITOR=vim
 export BUNDLE_EDITOR=vim
+
+export GITHUB_UPSTREAM=origin
+
+function pr_for_sha {
+  git log --merges --ancestry-path --oneline $1..master | grep 'pull request' | tail -n1 | awk '{print $5}' | cut -c2-
+}
