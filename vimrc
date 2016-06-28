@@ -46,6 +46,12 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 "color wombat256mod
 color tango2
 
+"wrap text at 80 chars in Markdown files
+augroup Formatting
+  autocmd!
+  autocmd BufNew,BufRead *.txt,*.mkd,*.md setlocal textwidth=80
+augroup END
+
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
 map <C-l> <ESC>:tabn<CR>
