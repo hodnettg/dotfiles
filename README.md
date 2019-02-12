@@ -1,7 +1,7 @@
 # Dotfiles
 
 A repo to make setting up defaults for Vim, Tmux, and Bashrc dead simple. To
-use, simple clone into the machine of your choice and run `./install`
+use, simply clone into the machine of your choice and run `./install`
 
 ### Gotchas and Notes
 
