@@ -24,4 +24,5 @@
         force: true
     ~/.local/share/nvim/site/autoload:
         path: local/share/nvim/site/autoload
+        create: true
         force: true
