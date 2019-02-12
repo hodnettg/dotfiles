@@ -6,6 +6,9 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" Avoids problems with backspace on Mac OSX
+set backspace=indent,eol,start
+
 "Turn on syntax highlighting
 syntax on
 
@@ -30,6 +33,7 @@ set history=100
 "set tabs to only be 2 spaces
 set tabstop=2 shiftwidth=2 expandtab
 
+
 " Highlight trailing whitespace
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
@@ -45,6 +49,19 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 "color wombat256mod
 color tango2
+
+"wrap text at 80 chars in Markdown files
+augroup Formatting
+  autocmd!
+  autocmd BufNew,BufRead *.txt,*.mkd,*.md setlocal textwidth=80
+augroup END
+
+"setup Marked Preview with <leader>p in markdown files
+function! s:setupMarkup()
+  nnoremap <leader>p :silent !open -a "Marked 2.app" '%:p'<cr>:redr!<CR>
+endfunction
+
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
