@@ -37,3 +37,8 @@ alias restart_clipboard='pkill -f VBoxClient; VBoxClient --clipboard'
 
 #Removes .orig files left over from mergetool after resolving conflicts
 alias clean_merge='find -name *.orig -exec rm {} \;'
+
+# Alias vim to nvim
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
