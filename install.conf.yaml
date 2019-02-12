@@ -19,3 +19,9 @@
     ~/.bash_aliases:
         path: bash_aliases
         force: true
+    ~/.config:
+        path: config
+        force: true
+    ~/.local/share/nvim/site/autoload:
+        path: local/share/nvim/site/autoload
+        force: true
