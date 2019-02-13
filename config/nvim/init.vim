@@ -19,7 +19,7 @@ syntax on
 filetype plugin indent on
 set nocp
 set t_Co=256
-" color tango2
+color tango2
 
 " Set leader as ;, loses some functionality for next f or t commands
 let mapleader=";"
