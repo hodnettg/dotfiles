@@ -21,6 +21,9 @@ set nocp
 set t_Co=256
 " color tango2
 
+" Set leader as ;, loses some functionality for next f or t commands
+let mapleader=";"
+
 " Tabs and spacing
 set autoindent
 set cindent
@@ -29,29 +32,28 @@ set shiftwidth=2
 set expandtab
 set smarttab
 
-" Display Line Numbers
-set nu
+set nu " Display Line Numbers
+set ruler " Shows the Ruler for the cursor
+set wildmenu " Allow status line to show possible completion of commands etc.
+set backspace=indent,eol,start " Allow use of backspace key to move backwards
+set nohlsearch " Don't highlight searches
+set history=100 " Keep more in history
+set lazyredraw " Don't update display when executing macros
+" set mouse=a " Enable use of mouse to click/select/move-to-text
 
-" Shows the Ruler for the cursor
-set ruler
+" Copy to clipboard with leader, y
+" Doesn't work on Vagrant
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
 
-" Allow status line to show possible completions of commands, file names etc.
-set wildmenu
-
-" Enable use of mouse in all modes
-set mouse=a
-
-" Allow usage of backspac to automatically move back
-set backspace=indent,eol,start
-
-" Don't highlight searches
-set nohlsearch
-
-" Keep more in History
-set history=100
-
-" Don't update display when executing macros
-set lazyredraw
+" Paste from clipboard with leader, p
+" Doesn't work on Vagrant
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " treat ejs files like HTML files
 au BufNewFile,BufRead *.ejs set filetype=html
