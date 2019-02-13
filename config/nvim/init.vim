@@ -1,11 +1,17 @@
-" set runtimepath^=~/.vim runtimepath+=~/.vim/after
-" let &packpath = &runtimepath
-" source ~/.vimrc
-
 call plug#begin()
 
-" NerdTree
+" NerdTree (remapped keys below)
 Plug 'scrooloose/nerdtree'
+
+" Easy Commenting with gc
+Plug 'tpope/vim-commentary'
+
+" Async Linting
+" Plug 'neomake/neomake'
+
+" Better Markdown/Writing Support
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-litecorrect'
 
 " Syntax highlighting
 " Disabling Vim-Polyglot for now as it makes markdown
@@ -32,8 +38,8 @@ set shiftwidth=2
 set expandtab
 set smarttab
 
-set nu " Display Line Numbers
-set ruler " Shows the Ruler for the cursor
+" set nu " Display Line Numbers
+" set ruler " Shows the Ruler for the cursor, can be slower
 set wildmenu " Allow status line to show possible completion of commands etc.
 set backspace=indent,eol,start " Allow use of backspace key to move backwards
 set nohlsearch " Don't highlight searches
@@ -63,10 +69,26 @@ au BufNewFile,BufRead *.ejs set filetype=html
 " let g:polyglot_disabled = ['markdown']
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim']
 
-"wrap text at 80 chars in Markdown files
-augroup Formatting
+" Neomake config
+" Full config: when writing or reading a buffer, and on changes in insert and
+" normal mode (after 1s; no delay when writing).
+" call neomake#configure#automake('nrwi', 500)
+
+augroup pencil
   autocmd!
-  autocmd BufNew,BufRead *.txt,*.mkd,*.md setlocal textwidth=80
+  autocmd FileType markdown,md
+        \   call pencil#init()
+        \ | call litecorrect#init()
+        \ | setl spell spl=en_us fdl=4 noru nonu nornu
+        \ | setl fdo+=search
+
+  " autocmd Filetype git,*commit*
+  "       \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
+  "       \ | call litecorrect#init()
+  "       \ | setl spell spl=en_us et sw=2 ts=2 noai
+
+  autocmd FileType text
+        \ call pencil#init()
 augroup END
 
 "setup Marked 2 Preview with <leader>p in markdown files

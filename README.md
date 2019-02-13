@@ -10,3 +10,6 @@ use, simple clone into the machine of your choice and run `./install`
 
 * Comment out alias that maps nvim to vim if on system without neovim. If using Neovim
   use `:PlugInstall` to install plugins (vim plugins are managed manually via dotfiles)
+
+* You may want to make sure git is using nvim as your default editor with:
+  `git config --global core.editor "nvim"`
