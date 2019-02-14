@@ -28,6 +28,12 @@ Plug 'junegunn/seoul256.vim'
 " Ruby Automatic End Insertion
 Plug 'tpope/vim-endwise'
 
+" vim interface to Web API, used by other plugins
+Plug 'mattn/webapi-vim'
+
+" Easy Gist Creation, Requires web-api
+Plug 'mattn/gist-vim'
+
 call plug#end()
 
 " General config for colorscheme etc.
@@ -106,6 +112,9 @@ autocmd FileType markdown,md,mkd,text call Prose()
 
 " text wrapping for commits and spell check
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" gist setup
+let g:gist_post_private = 1 " private by default
 
 "setup Marked 2 Preview with <leader>p in markdown files
 function! s:setupMarkup()
