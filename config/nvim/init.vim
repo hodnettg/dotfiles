@@ -13,11 +13,17 @@ Plug 'tpope/vim-commentary'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-litecorrect'
 Plug 'reedes/vim-lexical'
+Plug 'junegunn/goyo.vim'
+Plug 'dkarter/bullets.vim'
 
 " Syntax highlighting
 " Disabling Vim-Polyglot for now as it makes markdown
 " files slower to open even when disabled
 " Plug 'sheerun/vim-polyglot'
+
+" Color Schemes
+Plug 'ajh17/spacegray.vim'
+Plug 'junegunn/seoul256.vim'
 
 call plug#end()
 
@@ -77,6 +83,13 @@ let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js
 
 " Setup Prose mode for markdown and text files
 function! Prose()
+  " better color
+  colorscheme seoul256
+
+  " Enter Goyo mode
+  Goyo 80
+
+  " Set up wrap and spell check plugins
   call pencil#init()
   call litecorrect#init()
   call lexical#init()
@@ -85,6 +98,7 @@ function! Prose()
   iabbrev <buffer> -- –
   iabbrev <buffer> --- —
 endfunction
+
 autocmd FileType markdown,md,mkd,text call Prose()
 
 " text wrapping for commits and spell check
@@ -100,8 +114,6 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
 map <C-l> <ESC>:tabn<CR>
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
 map <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Highlight Trailing Whitespace
