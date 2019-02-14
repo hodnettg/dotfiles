@@ -1,39 +1,45 @@
 call plug#begin()
 
-" NerdTree (remapped keys below)
-Plug 'scrooloose/nerdtree'
+  " Dependencies {{{
+    " vim interface to Web API, used by other plugins
+    Plug 'mattn/webapi-vim'
 
-" Easy Commenting with gc
-Plug 'tpope/vim-commentary'
+    " Allows plugins to define custom text objects
+    Plug 'kana/vim-textobj-user'
+  " }}}
 
-" Async Linting
-" Plug 'neomake/neomake'
+  " NerdTree (remapped keys below)
+  Plug 'scrooloose/nerdtree'
 
-" Better Markdown/Writing Support
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-litecorrect'
-Plug 'reedes/vim-lexical'
-Plug 'junegunn/goyo.vim'
-Plug 'dkarter/bullets.vim'
+  " Easy Commenting with gc
+  Plug 'tpope/vim-commentary'
 
-" Syntax highlighting
-" Disabling Vim-Polyglot for now as it makes markdown
-" files slower to open even when disabled
-" Plug 'sheerun/vim-polyglot'
+  " Async Linting
+  " Plug 'neomake/neomake'
 
-" Color Schemes
-Plug 'ajh17/spacegray.vim'
-Plug 'junegunn/seoul256.vim'
+  " Better Markdown/Writing Support {{{
+    Plug 'reedes/vim-pencil'
+    Plug 'reedes/vim-litecorrect'
+    Plug 'reedes/vim-lexical'
+    Plug 'junegunn/goyo.vim'
+    Plug 'dkarter/bullets.vim'
+  " }}}
 
-" Ruby Automatic End Insertion
-Plug 'tpope/vim-endwise'
+  " Syntax highlighting
+  " Plug 'sheerun/vim-polyglot' " Disabling untl markdown perf fixed
 
-" vim interface to Web API, used by other plugins
-Plug 'mattn/webapi-vim'
+  " Color Schemes
+  Plug 'ajh17/spacegray.vim'
+  Plug 'junegunn/seoul256.vim'
 
-" Easy Gist Creation, Requires web-api
-Plug 'mattn/gist-vim'
+  " Ruby block selection
+  Plug 'nelstrom/vim-textobj-rubyblock'
 
+  " Ruby Automatic End Insertion
+  Plug 'tpope/vim-endwise'
+
+  " Easy Gist Creation, Requires web-api
+  Plug 'mattn/gist-vim'
 call plug#end()
 
 " General config for colorscheme etc.
