@@ -25,6 +25,9 @@ Plug 'dkarter/bullets.vim'
 Plug 'ajh17/spacegray.vim'
 Plug 'junegunn/seoul256.vim'
 
+" Ruby Automatic End Insertion
+Plug 'tpope/vim-endwise'
+
 call plug#end()
 
 " General config for colorscheme etc.
