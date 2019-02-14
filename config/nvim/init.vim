@@ -12,6 +12,7 @@ Plug 'tpope/vim-commentary'
 " Better Markdown/Writing Support
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-litecorrect'
+Plug 'reedes/vim-lexical'
 
 " Syntax highlighting
 " Disabling Vim-Polyglot for now as it makes markdown
@@ -74,22 +75,20 @@ let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js
 " normal mode (after 1s; no delay when writing).
 " call neomake#configure#automake('nrwi', 500)
 
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,md
-        \   call pencil#init()
-        \ | call litecorrect#init()
-        \ | setl spell spl=en_us fdl=4 noru nonu nornu
-        \ | setl fdo+=search
+" Setup Prose mode for markdown and text files
+function! Prose()
+  call pencil#init()
+  call litecorrect#init()
+  call lexical#init()
 
-  " autocmd Filetype git,*commit*
-  "       \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
-  "       \ | call litecorrect#init()
-  "       \ | setl spell spl=en_us et sw=2 ts=2 noai
+  " replace common punctuation
+  iabbrev <buffer> -- –
+  iabbrev <buffer> --- —
+endfunction
+autocmd FileType markdown,md,mkd,text call Prose()
 
-  autocmd FileType text
-        \ call pencil#init()
-augroup END
+" text wrapping for commits and spell check
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "setup Marked 2 Preview with <leader>p in markdown files
 function! s:setupMarkup()
