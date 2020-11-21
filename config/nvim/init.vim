@@ -40,6 +40,22 @@ call plug#begin()
 
   " Easy Gist Creation, Requires web-api
   Plug 'mattn/gist-vim'
+
+  " Syntax support for js/jsx
+  Plug 'yuezk/vim-js'
+  Plug 'maxmellon/vim-jsx-pretty'
+
+  " TypeScript Syntax for VIM
+  Plug 'leafgarland/typescript-vim'
+
+  " Typescript Syntax for TSX files
+  Plug 'ianks/vim-tsx'
+
+  " emmet.io support
+  Plug 'mattn/emmet-vim'
+
+  " Linting/Syntax Checking Support
+  " Plug 'w0rp/ale'
 call plug#end()
 
 " General config for colorscheme etc.
@@ -85,6 +101,17 @@ vnoremap <leader>P "+P
 
 " treat ejs files like HTML files
 au BufNewFile,BufRead *.ejs set filetype=html
+
+" Set ESLint as ale fixer for typescript
+" let g:ale_linter_aliases = { 'typescriptreact': 'typescript' }
+" let g:ale_fixers = { 'typescript': ['eslint'] }
+
+" Better lookign warning symbols for ale
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+
+" Fix ale linting errors on save
+" let g:ale_fix_on_save = 1
 
 " Syntax highlighting in Markdown
 " au BufNewFile,BufReadPost *.md set filetype=markdown
@@ -133,6 +160,10 @@ map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
 map <C-l> <ESC>:tabn<CR>
 map <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+" When opening new tabs in NerdTree mirror current NerdTree State
+" and show Dir Listing. Avoids having to navigate/open same structure again
+autocmd BufEnter * NERDTreeMirror
 
 " Highlight Trailing Whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
