@@ -85,11 +85,17 @@ fi
 
 
 # set up command line colors (show git branch if it exists)
-PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $ $RESETCOLOR"
+PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $RESETCOLOR"
+
+
 
 # RVM Helpers
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# asdf Helpers
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 # give RVM a chance to load after tmux split
 cd ..; cd -
