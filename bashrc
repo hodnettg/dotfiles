@@ -1,22 +1,3 @@
-# Local Variables
-BLACK="\[\033[0;30m\]"
-BLACKBOLD="\[\033[1;30m\]"
-WHITE="\[\033[0;47;m\]"
-WHITEBOLD="\[\033[1;37m\]"
-RED="\[\033[0;31m\]"
-REDBOLD="\[\033[1;31m\]"
-GREEN="\[\033[0;32m\]"
-GREENBOLD="\[\033[1;32m\]"
-YELLOW="\[\033[0;33m\]"
-YELLOWBOLD="\[\033[1;33m\]"
-BLUE="\[\033[0;34m\]"
-BLUEBOLD="\[\033[1;34m\]"
-PURPLE="\[\033[0;35m\]"
-PURPLEBOLD="\[\033[1;35m\]"
-CYAN="\[\033[0;36m\]"
-CYANBOLD="\[\033[1;36m\]"
-RESETCOLOR="\[\e[00m\]"
-
 # HELPER METHODS
 
 # determines if method or call exists in bash
@@ -83,11 +64,20 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+if command_exists oh-my-posh; then
+  themes_dir=$(brew --prefix oh-my-posh)
+  eval "$(oh-my-posh init bash --config ${themes_dir}/themes/peru.omp.json)"
+fi
 
-# set up command line colors (show git branch if it exists)
-PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $RESETCOLOR"
+# Set up PS1 with directory and git branch if oh-my-posh not installed, otherwise assume that theme covers it
+if ! command_exists oh-my-posh; then
+  GREEN="\[\033[0;32m\]"
+  YELLOW="\[\033[0;33m\]"
+  RESETCOLOR="\[\e[00m\]"
 
-
+  # set up command line colors (show git branch if it exists)
+  PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $RESETCOLOR"
+fi
 
 # RVM Helpers
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
