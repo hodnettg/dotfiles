@@ -97,6 +97,11 @@ fi
 # give RVM a chance to load after tmux split
 cd ..; cd -
 
+# Start ssh-agent
+if command_exists ssh-agent; then
+  eval "$(ssh-agent -s)"
+fi
+
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 export EDITOR=vim
 export BUNDLE_EDITOR=vim
