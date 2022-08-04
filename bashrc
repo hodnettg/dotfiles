@@ -89,6 +89,11 @@ if command_exists asdf; then
 . $HOME/.asdf/completions/asdf.bash
 fi
 
+# if using linux brew, make it available
+if [ -d "/home/linuxbrew/.linuxbrew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # give RVM a chance to load after tmux split
 cd ..; cd -
 
