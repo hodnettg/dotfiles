@@ -29,7 +29,6 @@ call plug#begin()
   " Plug 'sheerun/vim-polyglot' " Disabling untl markdown perf fixed
 
   " Color Schemes
-  Plug 'ajh17/spacegray.vim'
   Plug 'junegunn/seoul256.vim'
 
   " Ruby block selection
