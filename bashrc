@@ -1,5 +1,3 @@
-# HELPER METHODS
-
 # determines if method or call exists in bash
 command_exists () {
   type "$1" &> /dev/null ;
@@ -64,6 +62,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+# if using linux brew, make it available, this must be done before posh commands/helpers
+if [ -d "/home/linuxbrew/.linuxbrew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 if command_exists oh-my-posh; then
   themes_dir=$(brew --prefix oh-my-posh)
   eval "$(oh-my-posh init bash --config ${themes_dir}/themes/peru.omp.json)"
@@ -87,11 +90,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 if command_exists asdf; then
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
-fi
-
-# if using linux brew, make it available
-if [ -d "/home/linuxbrew/.linuxbrew" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # give RVM a chance to load after tmux split
