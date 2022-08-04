@@ -94,8 +94,10 @@ PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $RESETCOLOR"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # asdf Helpers
+if command_exists asdf; then
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+fi
 
 # give RVM a chance to load after tmux split
 cd ..; cd -
